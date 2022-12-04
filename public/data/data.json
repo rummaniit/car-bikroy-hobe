@@ -1,0 +1,128 @@
+[
+    {
+        "_id": "aasdS243",
+        "category_name": "Mircro-Bus",
+        "category_products": [
+            {
+                "p_name": "Toyota Hiace Super GL 2016 White",
+                "p_price_original": 3100000,
+                "p_price_resel": 2000000,
+                "p_engine_capacity": "2000cc",
+                "p_fuel_system": "Octane",
+                "p_transmission": "Automatic",
+                "p_seat": 12,
+                "p_body_color": "white",
+                "p_image": "https://www.bdstall.com/asset/product-image/giant_145576.jpg",
+                "available": true
+            },
+            {
+                "p_name": "Toyota Hiace GL-KDH 2016 Pearl",
+                "p_price_original": "2,950,000",
+                "p_price_resel": "1,950,000",
+                "p_engine_capacity": "3000cc",
+                "p_fuel_system": "Octane",
+                "p_transmission": "Automatic",
+                "p_seat": 12,
+                "p_body_color": "Black",
+                "p_image": "https://www.bdstall.com/asset/product-image/giant_145334.jpg",
+                "available": true
+            },
+            {
+                "p_name": "Toyota Hiace Super GL-KDH 2016 Black\t",
+                "p_price_original": "2,980,000",
+                "p_price_resel": "2,300,000",
+                "p_engine_capacity": "3000cc",
+                "p_fuel_system": "Octane",
+                "p_transmission": "Automatic",
+                "p_seat": 12,
+                "p_body_color": "white",
+                "p_image": "https://www.bdstall.com/asset/product-image/giant_143962.jpg",
+                "available": true
+            }
+        ]
+    },
+    {
+        "_id": "nfkns7s",
+        "category_name": "Sport Utility Vehicle",
+        "category_products": [
+            {
+                "p_name": "RAV4",
+                "p_price_original": "3,100,0000",
+                "p_price_resel": "2,100,0000",
+                "p_engine_capacity": "5000cc",
+                "p_fuel_system": "Octane",
+                "p_transmission": "5-Speed Automatic",
+                "p_seat": 10,
+                "p_body_color": "Ash",
+                "p_image": "http://www.clickheretesting.com/SunriseToyota/suv/images/suv-img-rav4.jpg",
+                "available": true
+            },
+            {
+                "p_name": "Highlander",
+                "p_price_original": "2,950,0000",
+                "p_price_resel": "1,550,0000",
+                "p_engine_capacity": "4000cc",
+                "p_fuel_system": "Octane",
+                "p_transmission": "8-Speed Automatic",
+                "p_seat": 8,
+                "p_body_color": "Black",
+                "p_image": "http://www.clickheretesting.com/SunriseToyota/suv/images/suv-img-highlander.jpg",
+                "available": false
+            },
+            {
+                "p_name": "4Runner",
+                "p_price_original": "4,980,000",
+                "p_price_resel": "2,980,000",
+                "p_engine_capacity": "8000cc",
+                "p_fuel_system": "Octane",
+                "p_transmission": "10-Speed Automatic",
+                "p_seat": 10,
+                "p_body_color": "white",
+                "p_image": "http://www.clickheretesting.com/SunriseToyota/suv/images/suv-img-4runner.jpg",
+                "available": false
+            }
+        ]
+    },
+    {
+        "_id": "mznv7zhgf",
+        "category_name": "Electric Bus",
+        "category_products": [
+            {
+                "p_name": "GMC Hummer EV — 47 MPGe",
+                "p_price_original": "3,100,000",
+                "p_price_resel": "1,100,000",
+                "p_engine_capacity": "4000cc",
+                "p_fuel_system": "Octane",
+                "p_transmission": "Automatic",
+                "p_seat": 6,
+                "p_body_color": "white",
+                "p_image": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-gmc-hummer-ev-003-1621472004.jpg?crop=1xw:1xh;center,top&resize=980:*",
+                "available": false
+            },
+            {
+                "p_name": "Rivian R1S — 69 MPGe",
+                "p_price_original": "3,950,000",
+                "p_price_resel": "1,550,000",
+                "p_engine_capacity": "6000cc",
+                "p_fuel_system": "Octane",
+                "p_transmission": "6 speed Automatic",
+                "p_seat": 12,
+                "p_body_color": "white",
+                "p_image": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2021-01-rivian-com-r1s-productpage-capability-performance-jj-1746-00509-1760x1100-1-1620504326.jpg?crop=0.565xw:0.606xh;0.345xw,0.228xh&resize=980:*",
+                "available": true
+            },
+            {
+                "p_name": "Porsche Taycan Cross Turismo — 76 MPGe",
+                "p_price_original": "20,980,000",
+                "p_price_resel": "10,580,000",
+                "p_engine_capacity": "8000cc",
+                "p_fuel_system": "Octane",
+                "p_transmission": "10 speed Automatic",
+                "p_seat": 4,
+                "p_body_color": "black",
+                "p_image": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-porsche-taycan-cross-turismo-18-16gg-1637204969.jpeg?crop=1xw:1xh;center,top&resize=980:*",
+                "available": false
+            }
+        ]
+    }
+]
