@@ -11,6 +11,7 @@ function App() {
   const queryClient = new QueryClient()
   return (
     <div className="max-w-[1000px] mx-auto">
+
       <QueryClientProvider
         client={queryClient}
       >

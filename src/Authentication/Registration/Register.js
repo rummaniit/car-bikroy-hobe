@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 import { Authcontext } from '../../Context/AuthContext/AuthServices';
 
 const Register = () => {
-    const { createUser, errors, setErrors } = useContext(Authcontext)
+    const { createUser, errors, setErrors, updateUserName } = useContext(Authcontext)
     const { register, handleSubmit } = useForm();
     const onSubmit = (data, e) => {
         e.preventDefault()
@@ -27,6 +27,28 @@ const Register = () => {
             .then(result => {
                 alert('Registration Successful')
                 const user = result.user
+                updateUserName(fullname)
+                    .then(() => {
+                        console.log('Display Name Updated')
+                        fetch('http://localhost:5000/allusers', {
+                            method: 'POST',
+                            headers: {
+                                "Content-Type": 'application/json',
+                            },
+                            body: JSON.stringify(userInfo)
+                        })
+                            .then(res => {
+                                res.json()
+                                setErrors(' ')
+
+                            })
+                            .then(info => {
+                                console.log(info)
+                            })
+                    })
+                    .catch(error => {
+                        console.log(error.message);
+                    })
                 e.target.reset()
                 console.log(user);
             }).catch(error => {
@@ -86,6 +108,7 @@ const Register = () => {
                         <select className="input input-bordered" {...register("role", { required: true })}>
                             <option value="user">User</option>
                             <option value="seller">Seller</option>
+                            {/* <option value="admin">Admin</option> */}
                         </select>
                         <br />
                     </div>
@@ -98,7 +121,7 @@ const Register = () => {
                     </div>
                     <div>Already have an account? <Link className='text-blue-700' to='/login'>Login</Link></div>
                     {
-                        errors ? <small className='text-red-700'>{setErrors}</small> : <small className='text-green-700'>Registration Successful</small>
+                        errors && <small className='text-red-700'>{setErrors}</small>
                     }
                     <button className='btn btn-outline' type="submit">Submit</button>
                 </div>

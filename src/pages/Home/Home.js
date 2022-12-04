@@ -3,17 +3,24 @@ import { useQuery } from '@tanstack/react-query'
 import axios from 'axios';
 import Banner from './Banner/Banner';
 import Chat from './Contact with Us/Chat';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Available from './Available Cars/Available';
 
 const Home = () => {
     const { data, isLoading } = useQuery(['showCategory'], () => {
         return axios.get('http://localhost:5000/allcars')
-    })
+    },
+        {
+            refetchInterval: 3000
+        })
     if (isLoading) {
         <div className="w-16 h-16 border-4 mx-auto border-dashed rounded-full animate-spin dark:border-violet-400"></div>
     }
     console.log(data);
+    const navigate = useNavigate()
+    const handleNavigate = (id) => {
+        navigate(`/car/${id}`)
+    }
     return (
         <>
             <Banner></Banner>
@@ -25,14 +32,15 @@ const Home = () => {
                             <h2 className="text-3xl font-bold font-mono text-orange-500">{category.category_name}</h2>
                             <p className='text-orange-700 text-xl font-bold'>Available Cars</p>
                             {
-                                category?.category_products.map(cars => <ul>
+                                category.category_products.map(cars => <ul>
                                     <li>{cars.p_name}</li>
                                 </ul>)
                             }
                             <div className="card-actions justify-center">
-                                <Link to={`${category.category_name}/${category._id}`}>
-                                    <button className="btn btn-outline mt-6">See all {category.category_name} cars</button>
-                                </Link>
+
+                                <button className="btn btn-outline mt-6"
+                                    onClick={() => handleNavigate(category._id)}>See all {category.category_name} cars</button>
+
                             </div>
                         </div>
                     </div>)
