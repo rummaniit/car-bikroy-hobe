@@ -11,6 +11,7 @@ import Allsellers from "../../pages/All sellers/Allsellers";
 import Blogs from "../../pages/Blogs/Blogs";
 import Cardetails from "../../pages/Home/Car Details/Cardetails";
 import Home from "../../pages/Home/Home";
+import Modal from "../../pages/Modal/Modal";
 import Myproducts from "../../pages/My Products/Myproducts";
 import Privateroutes from "../Private/Privateroutes";
 
@@ -45,6 +46,9 @@ export const routes = createBrowserRouter([
                     return fetch(`http://localhost:5000/allproducts/${params.id}`)
                 },
                 element: <Privateroutes><Cardetails></Cardetails></Privateroutes>
+            }, {
+                path: '/modal',
+                element: <Modal></Modal>
             }
 
         ])

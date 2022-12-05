@@ -1,12 +1,21 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import Modal from '../../Modal/Modal';
 
 const Cardetails = () => {
     const data = useLoaderData()
-    console.log(data);
+    // console.log(data);
     const imageStyle = {
         width: '150px'
+    }
+    const navigate = useNavigate()
+    const handleModal = (name, price, email, telephone) => {
+        console.log(name);
+        navigate('/modal', {
+            state: {
+                data: [{ name: name, price: price, email: email, telephone: telephone }]
+            }
+        })
     }
     return (
         <div>
@@ -37,18 +46,20 @@ const Cardetails = () => {
                             <td>{car.available ? <p className=' bg-green-700 py-2 text-center rounded-md'>Available Now</p> : <p className=' bg-red-700 py-2 text-center rounded-md'>Not Available Now</p>}</td>
                             <td>{car.available ? <label className='btn bg-blue-400 py-2  text-center rounded-md'
                                 htmlFor="bookingModal"
+                                onClick={() => handleModal(car.p_name, car.p_price_resel, car.seller_email,
+                                    car.seller_telephone)}
                             >Book Now</label> :
                                 <button className='btn bg-blue-400'
-
                                     disabled>Book Now</button>
                             }</td>
                         </tr>)
 
                         )
+
                     }
                 </tbody>
-                <Modal></Modal>
             </table >
+
 
         </div >
 
