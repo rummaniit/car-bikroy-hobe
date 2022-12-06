@@ -1,11 +1,12 @@
 import React from 'react';
 import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { Authcontext } from '../../Context/AuthContext/AuthServices';
 
 const Register = () => {
+    const navigate = useNavigate()
     const { createUser, errors, setErrors, updateUserName } = useContext(Authcontext)
     const { register, handleSubmit } = useForm();
     const onSubmit = (data, e) => {
@@ -43,6 +44,7 @@ const Register = () => {
 
                             })
                             .then(info => {
+                                getToken(email)
                                 console.log(info)
                             })
                     })
@@ -57,17 +59,18 @@ const Register = () => {
                 console.log(errorCode, errorMessage);
             })
 
-
-        // for fetching
-        // fetch('', {
-        //     method: 'POST',
-        //     headers: {
-        //         'content-type': 'application/json'
-        //     },
-        //     body: JSON.stringify(userInfo)
-        // })
-
     };
+
+    const getToken = (email) => {
+        fetch(`http://localhost:5000/jwt?email=${email}`)
+            .then(res => res.json())
+            .then(data => {
+                if (data.accessToken) {
+                    localStorage.setItem('accessToken', data.accessToken)
+                    navigate('/')
+                }
+            })
+    }
     return (
 
         <div>

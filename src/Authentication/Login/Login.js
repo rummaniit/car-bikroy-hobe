@@ -1,3 +1,5 @@
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
 import React from 'react';
 import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
@@ -6,29 +8,43 @@ import { Authcontext } from '../../Context/AuthContext/AuthServices';
 
 const Login = () => {
     const { signIn, errors, setErrors, errorsCode, setErrorsCode } = useContext(Authcontext)
+    // const { data, isLoading } = useQuery(['loginRole'], () => {
+    //     return axios.get('http://localhost:5000/allusers')
+    // })
+    // if (isLoading) {
+    //     <div className="w-16 h-16 border-4 mx-auto border-dashed rounded-full animate-spin dark:border-violet-400"></div>
+    // }
+    // data?.data.map(rl => console.log(rl.role))
     const { register, handleSubmit } = useForm();
     const location = useLocation()
     const navigate = useNavigate()
     let from = location.state?.from?.pathname || '/'
-    const onSubmit = (data, e) => {
+
+    const onSubmit = (info, e) => {
         e.preventDefault()
-        const fullname = data.fullname
+        // const fullname = info.fullname
 
-        const email = data.email
-        const password = data.password
+        const email = info.email
+        const password = info.password
+        // const duty = info.duty
+        // const filtered = data?.data.filter(pr => pr.email === email)
+        // console.log(email, password, filtered);
 
-        console.log(email, password);
 
+        // // send to Database(collection user or seller)
+        // const userInfo = {
+        //     fullname, email, password
+        // }
 
-        // send to Database(collection user or seller)
-        const userInfo = {
-            fullname, email, password
-        }
+        // const roll = filtered.map(pr => pr.role)
+        // console.log(roll[0]);
+
         // Sign In Function Firebase
         signIn(email, password)
             .then(result => {
                 const user = result.user
                 console.log(user);
+
                 e.target.reset()
                 alert('Login Successful')
                 setErrors('')
@@ -54,17 +70,7 @@ const Login = () => {
                             <input type='email' {...register("email", { required: true })} className="input input-bordered" />
                             <br />
                         </div>
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">User Role</span>
-                            </label>
-                            <select className="input input-bordered" {...register("role", { required: true })}>
-                                <option value="user">User</option>
-                                <option value="seller">Seller</option>
-                                <option value="admin">Admin</option>
-                            </select>
-                            <br />
-                        </div>
+
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Password</span>

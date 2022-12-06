@@ -1,29 +1,46 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { useLoaderData, useLocation } from 'react-router-dom';
+import { Authcontext } from '../../Context/AuthContext/AuthServices';
+// import AuthServices from '../../Context/AuthContext/AuthServices';
 
 const Modal = () => {
+    const { presentUser } = useContext(Authcontext)
+    console.log(presentUser);
     const location = useLocation();
     const { data } = location.state;
     console.log(data);
     const { register, handleSubmit } = useForm();
     const onSubmit = (data, e) => {
         e.preventDefault()
-        const fullname = data.fullname
-        const address = data.address
-        const email = data.email
-        const password = data.password
-        const role = data.role
-        const phone = data.telephone
-        console.log(fullname, address, email, password, role, phone);
+        const carname = data.carname
+        const carprice = parseInt(data.carprice)
+        const selleremail = data.email
+        const location = data.location
+        const sellerphone = data.telephone
+        const image = data.image
+        console.log(carname, carprice, selleremail, location, sellerphone, image);
 
 
         // send to Database(collection user or seller)
         const userInfo = {
-            fullname, address, email, password, role, phone
+            carname, carprice, selleremail, location, sellerphone, currentUser: presentUser?.email, image
         }
 
-
+        fetch('http://localhost:5000/allbooking', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(userInfo)
+        }).then(res => {
+            res.json()
+            e.target.reset()
+            alert('Your Item Is Booked')
+        })
+            .then(data => {
+                console.log(data);
+            })
 
         // for fetching
         // fetch('', {
@@ -76,6 +93,13 @@ const Modal = () => {
                                 <span className="label-text">Location of Meeting</span>
                             </label>
                             <input type='text' className="input input-bordered" {...register("location", { required: true })} />
+                            <br />
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Image Url</span>
+                            </label>
+                            <input defaultValue={info.image} readOnly type='text' className="input input-bordered" {...register("image", { required: true })} />
                             <br />
                         </div>
 

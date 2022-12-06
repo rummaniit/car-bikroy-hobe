@@ -9,11 +9,11 @@ const Cardetails = () => {
         width: '150px'
     }
     const navigate = useNavigate()
-    const handleModal = (name, price, email, telephone) => {
-        console.log(name);
+    const handleModal = (name, price, email, telephone, image) => {
+        // console.log(name);
         navigate('/modal', {
             state: {
-                data: [{ name: name, price: price, email: email, telephone: telephone }]
+                data: [{ name: name, price: price, email: email, telephone: telephone, image: image }]
             }
         })
     }
@@ -47,7 +47,7 @@ const Cardetails = () => {
                             <td>{car.available ? <label className='btn bg-blue-400 py-2  text-center rounded-md'
                                 htmlFor="bookingModal"
                                 onClick={() => handleModal(car.p_name, car.p_price_resel, car.seller_email,
-                                    car.seller_telephone)}
+                                    car.seller_telephone, car.p_image)}
                             >Book Now</label> :
                                 <button className='btn bg-blue-400'
                                     disabled>Book Now</button>

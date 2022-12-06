@@ -12,8 +12,12 @@ import Blogs from "../../pages/Blogs/Blogs";
 import Cardetails from "../../pages/Home/Car Details/Cardetails";
 import Home from "../../pages/Home/Home";
 import Modal from "../../pages/Modal/Modal";
+import Myorders from "../../pages/My Orders/Myorders";
 import Myproducts from "../../pages/My Products/Myproducts";
+import Adminroutes from "../Admin Routes/Adminroutes";
+import Buyerroutes from "../Buyer Routes/Buyerroutes";
 import Privateroutes from "../Private/Privateroutes";
+import Sellerroutes from "../Seller Routes/Sellerroutes";
 
 export const routes = createBrowserRouter([
     {
@@ -59,23 +63,27 @@ export const routes = createBrowserRouter([
         children: ([
             {
                 path: '/dashboard',
-                element: <Addproducts></Addproducts>
+                element: <Sellerroutes><Addproducts></Addproducts></Sellerroutes>
             },
             {
                 path: '/dashboard/addproducts',
-                element: <Addproducts></Addproducts>
+                element: <Sellerroutes><Addproducts></Addproducts></Sellerroutes>
             },
             {
                 path: '/dashboard/myproducts',
-                element: <Myproducts></Myproducts>
+                element: <Sellerroutes><Myproducts></Myproducts></Sellerroutes>
             },
             {
                 path: '/dashboard/sellers',
-                element: <Allsellers></Allsellers>
+                element: <Adminroutes> <Allsellers></Allsellers></Adminroutes>
             },
             {
                 path: '/dashboard/buyers',
-                element: <Allbuyers></Allbuyers>
+                element: <Adminroutes><Allbuyers></Allbuyers></Adminroutes>
+            },
+            {
+                path: '/dashboard/myorders',
+                element: <Buyerroutes><Myorders></Myorders></Buyerroutes>
             }
         ])
     }
