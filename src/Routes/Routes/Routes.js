@@ -14,6 +14,8 @@ import Home from "../../pages/Home/Home";
 import Modal from "../../pages/Modal/Modal";
 import Myorders from "../../pages/My Orders/Myorders";
 import Myproducts from "../../pages/My Products/Myproducts";
+import Payment from "../../pages/Payment/Payment";
+import Errorpage from "../../pages/Shared/Error/Errorpage";
 import Adminroutes from "../Admin Routes/Adminroutes";
 import Buyerroutes from "../Buyer Routes/Buyerroutes";
 import Privateroutes from "../Private/Privateroutes";
@@ -23,6 +25,7 @@ export const routes = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement: <Errorpage></Errorpage>,
         children: ([
             {
                 path: '/',
@@ -60,6 +63,7 @@ export const routes = createBrowserRouter([
     {
         path: '/dashboard',
         element: <Privateroutes><DashboardLayout></DashboardLayout></Privateroutes>,
+        errorElement: <Errorpage></Errorpage>,
         children: ([
             {
                 path: '/dashboard',
@@ -84,6 +88,13 @@ export const routes = createBrowserRouter([
             {
                 path: '/dashboard/myorders',
                 element: <Buyerroutes><Myorders></Myorders></Buyerroutes>
+            },
+            {
+                path: '/dashboard/payment/:id',
+                loader: ({ params }) => {
+                    return fetch(`http://localhost:5000/allbooking/users/${params.id}`)
+                },
+                element: <Buyerroutes><Payment></Payment></Buyerroutes>
             }
         ])
     }

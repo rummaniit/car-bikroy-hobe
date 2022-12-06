@@ -1,11 +1,12 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { useLoaderData, useLocation } from 'react-router-dom';
+import { useLoaderData, useLocation, useNavigate } from 'react-router-dom';
 import { Authcontext } from '../../Context/AuthContext/AuthServices';
 // import AuthServices from '../../Context/AuthContext/AuthServices';
 
 const Modal = () => {
     const { presentUser } = useContext(Authcontext)
+    const navigate = useNavigate()
     console.log(presentUser);
     const location = useLocation();
     const { data } = location.state;
@@ -37,6 +38,7 @@ const Modal = () => {
             res.json()
             e.target.reset()
             alert('Your Item Is Booked')
+            navigate('/dashboard/myproducts')
         })
             .then(data => {
                 console.log(data);
