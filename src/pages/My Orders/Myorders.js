@@ -1,9 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Authcontext } from '../../Context/AuthContext/AuthServices';
 
 const Myorders = () => {
+    const navigate = useNavigate()
     const { presentUser } = useContext(Authcontext)
     const { data, isLoading } = useQuery(['myorders'], () => {
         return axios.get(`http://localhost:5000/allbooking/user?email=${presentUser?.email}`, {
@@ -18,6 +20,9 @@ const Myorders = () => {
     const imageStyle = {
         width: '130px'
 
+    }
+    const handlePayment = (id) => {
+        navigate(`/dashboard/payment/${id}`)
     }
     // console.log(data);
     return (
@@ -44,7 +49,7 @@ const Myorders = () => {
                                 <td>{products.carname}</td>
                                 <td>{products.carprice}</td>
                                 <td><button className='btn bg-red-700'>Delete</button></td>
-                                <td><button className='btn bg-blue-700'>Pay</button></td>
+                                <td><button className='btn bg-blue-700' onClick={() => handlePayment(products._id)}>Pay</button></td>
                             </tr>)
                         }
 

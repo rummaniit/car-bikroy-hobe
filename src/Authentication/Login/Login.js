@@ -1,13 +1,22 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import React from 'react';
+import React, { useState } from 'react';
 import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Authcontext } from '../../Context/AuthContext/AuthServices';
+import useToken from '../../hooks/useToken';
 
 const Login = () => {
     const { signIn, errors, setErrors, errorsCode, setErrorsCode } = useContext(Authcontext)
+    const [loginUserEmail, setLoginUserEmail] = useState('')
+    const [token] = useToken(loginUserEmail)
+    const navigate = useNavigate()
+    const location = useLocation()
+    let from = location.state?.from?.pathname || '/'
+    if (token) {
+        navigate(from, { replace: true })
+    }
     // const { data, isLoading } = useQuery(['loginRole'], () => {
     //     return axios.get('http://localhost:5000/allusers')
     // })
@@ -16,9 +25,6 @@ const Login = () => {
     // }
     // data?.data.map(rl => console.log(rl.role))
     const { register, handleSubmit } = useForm();
-    const location = useLocation()
-    const navigate = useNavigate()
-    let from = location.state?.from?.pathname || '/'
 
     const onSubmit = (info, e) => {
         e.preventDefault()
@@ -44,11 +50,12 @@ const Login = () => {
             .then(result => {
                 const user = result.user
                 console.log(user);
+                setLoginUserEmail(email)
 
                 e.target.reset()
                 alert('Login Successful')
                 setErrors('')
-                navigate(from, { replace: true })
+
             })
             .catch(error => {
                 const errorCode = error.code

@@ -1,14 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { Authcontext } from '../../Context/AuthContext/AuthServices';
+import useToken from '../../hooks/useToken';
 
 const Register = () => {
-    const navigate = useNavigate()
+    const [createdUseremail, setCreatedUseremail] = useState('')
+    const [token] = useToken(createdUseremail)
     const { createUser, errors, setErrors, updateUserName } = useContext(Authcontext)
     const { register, handleSubmit } = useForm();
+    const navigate = useNavigate()
+    if (token) {
+        navigate('/')
+    }
     const onSubmit = (data, e) => {
         e.preventDefault()
         const fullname = data.fullname
@@ -41,10 +47,11 @@ const Register = () => {
                             .then(res => {
                                 res.json()
                                 setErrors(' ')
-
                             })
                             .then(info => {
-                                getToken(email)
+                                // getToken(email)
+                                setCreatedUseremail(email)
+                                // navigate('/')
                                 console.log(info)
                             })
                     })
@@ -61,16 +68,7 @@ const Register = () => {
 
     };
 
-    const getToken = (email) => {
-        fetch(`http://localhost:5000/jwt?email=${email}`)
-            .then(res => res.json())
-            .then(data => {
-                if (data.accessToken) {
-                    localStorage.setItem('accessToken', data.accessToken)
-                    navigate('/')
-                }
-            })
-    }
+
     return (
 
         <div>
