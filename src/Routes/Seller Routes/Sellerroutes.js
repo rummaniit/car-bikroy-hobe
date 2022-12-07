@@ -8,7 +8,7 @@ const Sellerroutes = ({ children }) => {
     const { presentUser, loading } = useContext(Authcontext)
     const location = useLocation()
     const { data, isLoading } = useQuery(['admin'], () => {
-        return axios.get(`http://localhost:5000/allusers/byemail/?email=${presentUser.email}`)
+        return axios.get(`https://carreselling-server.vercel.app/allusers/byemail/?email=${presentUser.email}`)
     }, {
         refetchInterval: 2000
     })

@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const Available = () => {
     const { data, isLoading } = useQuery(['showCategory'], () => {
-        return axios.get('http://localhost:5000/allcars')
+        return axios.get('https://carreselling-server.vercel.app/allcars')
     })
     if (isLoading) {
         <div className="w-16 h-16 border-4 mx-auto border-dashed rounded-full animate-spin dark:border-violet-400"></div>

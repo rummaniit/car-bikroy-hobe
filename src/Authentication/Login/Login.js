@@ -18,7 +18,7 @@ const Login = () => {
         navigate(from, { replace: true })
     }
     // const { data, isLoading } = useQuery(['loginRole'], () => {
-    //     return axios.get('http://localhost:5000/allusers')
+    //     return axios.get('https://carreselling-server.vercel.app/allusers')
     // })
     // if (isLoading) {
     //     <div className="w-16 h-16 border-4 mx-auto border-dashed rounded-full animate-spin dark:border-violet-400"></div>

@@ -50,7 +50,7 @@ export const routes = createBrowserRouter([
             {
                 path: '/car/:id',
                 loader: ({ params }) => {
-                    return fetch(`http://localhost:5000/allproducts/${params.id}`)
+                    return fetch(`https://carreselling-server.vercel.app/allproducts/${params.id}`)
                 },
                 element: <Privateroutes><Cardetails></Cardetails></Privateroutes>
             }, {
@@ -92,7 +92,7 @@ export const routes = createBrowserRouter([
             {
                 path: '/dashboard/payment/:id',
                 loader: ({ params }) => {
-                    return fetch(`http://localhost:5000/allbooking/users/${params.id}`)
+                    return fetch(`https://carreselling-server.vercel.app/allbooking/users/${params.id}`)
                 },
                 element: <Buyerroutes><Payment></Payment></Buyerroutes>
             }

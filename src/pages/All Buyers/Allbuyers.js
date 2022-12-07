@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const Allbuyers = () => {
     const { data, isLoading } = useQuery(['showCategory'], () => {
-        return axios.get('http://localhost:5000/allusers')
+        return axios.get('https://carreselling-server.vercel.app/allusers')
     }, {
         refetchInterval: 2000
     })
@@ -14,7 +14,7 @@ const Allbuyers = () => {
     const filtered = data?.data.filter(seller => seller.role === 'user')
     const handleDelete = (id) => {
         console.log(id);
-        fetch(`http://localhost:5000/deletebuyer/${id}`, {
+        fetch(`https://carreselling-server.vercel.app/deletebuyer/${id}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json'

@@ -8,7 +8,7 @@ const Myorders = () => {
     const navigate = useNavigate()
     const { presentUser } = useContext(Authcontext)
     const { data, isLoading } = useQuery(['myorders'], () => {
-        return axios.get(`http://localhost:5000/allbooking/user?email=${presentUser?.email}`, {
+        return axios.get(`https://carreselling-server.vercel.app/allbooking/user?email=${presentUser?.email}`, {
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
             }
@@ -45,7 +45,7 @@ const Myorders = () => {
                         {
                             data?.data.map(products => <tr>
 
-                                <td><img src={products.image} className='rounded-xl' style={imageStyle} alt="" /></td>
+                                <td ><img src={products.image} className='rounded-xl' style={imageStyle} alt="" /></td>
                                 <td>{products.carname}</td>
                                 <td>{products.carprice}</td>
                                 <td><button className='btn bg-red-700'>Delete</button></td>

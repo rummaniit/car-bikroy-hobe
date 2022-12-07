@@ -28,7 +28,7 @@ const Modal = () => {
             carname, carprice, selleremail, location, sellerphone, currentUser: presentUser?.email, image
         }
 
-        fetch('http://localhost:5000/allbooking', {
+        fetch('https://carreselling-server.vercel.app/allbooking', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

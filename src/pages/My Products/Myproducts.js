@@ -8,7 +8,7 @@ const Myproducts = () => {
     const { presentUser } = useContext(Authcontext)
     console.log(presentUser);
     const { data, isLoading } = useQuery(['myProducts'], () => {
-        return axios.get(`http://localhost:5000/sellerproducts?email=${presentUser?.email}`)
+        return axios.get(`https://carreselling-server.vercel.app/sellerproducts?email=${presentUser?.email}`)
     },
         {
             refetchInterval: 2000
@@ -24,7 +24,7 @@ const Myproducts = () => {
         let body = {
             verify
         }
-        fetch(`http://localhost:5000/available/?name=${name}`, {
+        fetch(`https://carreselling-server.vercel.app/available/?name=${name}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -45,7 +45,7 @@ const Myproducts = () => {
         let body = {
             verify, name
         }
-        fetch(`http://localhost:5000/soldout/?name=${name}`, {
+        fetch(`https://carreselling-server.vercel.app/soldout/?name=${name}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -65,7 +65,7 @@ const Myproducts = () => {
         const body = {
             name
         }
-        fetch(`http://localhost:5000/deleteproduct/?name=${name}`, {
+        fetch(`https://carreselling-server.vercel.app/deleteproduct/?name=${name}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

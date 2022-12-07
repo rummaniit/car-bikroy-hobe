@@ -9,12 +9,12 @@ const Adminroutes = ({ children }) => {
     const location = useLocation()
     // const [data, setData] = useState([])
     // useEffect(() => {
-    //     fetch(`http://localhost:5000/allusers/byemail/?email=${presentUser.email}`)
+    //     fetch(`https://carreselling-server.vercel.app/allusers/byemail/?email=${presentUser.email}`)
     //         .then(res => res.json())
     //         .then(data => setData(data))
     // }, [presentUser.email])
     const { data, isLoading } = useQuery(['admin'], () => {
-        return axios.get(`http://localhost:5000/allusers/byemail/?email=${presentUser.email}`)
+        return axios.get(`https://carreselling-server.vercel.app/allusers/byemail/?email=${presentUser.email}`)
     }, {
         refetchInterval: 2000
     })

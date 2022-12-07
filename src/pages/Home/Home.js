@@ -9,7 +9,7 @@ import Available from './Available Cars/Available';
 const Home = () => {
     const navigate = useNavigate()
     const { data, isLoading } = useQuery(['showCategory'], () => {
-        return axios.get('http://localhost:5000/allcars')
+        return axios.get('https://carreselling-server.vercel.app/allcars')
     },
         {
             refetchInterval: 3000

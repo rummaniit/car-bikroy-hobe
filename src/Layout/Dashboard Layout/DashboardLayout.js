@@ -9,7 +9,7 @@ import Navbar from '../../pages/Shared/Navbar/Navbar';
 const DashboardLayout = () => {
     const { presentUser } = useContext(Authcontext)
     const { data, isLoading } = useQuery(['roles'], () => {
-        return axios.get(`http://localhost:5000/allusers/byemail?email=${presentUser.email}`)
+        return axios.get(`https://carreselling-server.vercel.app/allusers/byemail?email=${presentUser.email}`)
     })
     if (isLoading) {
         return <div className="w-16 h-16 border-4 mx-auto border-dashed rounded-full animate-spin dark:border-violet-400"></div>

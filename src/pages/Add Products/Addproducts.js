@@ -36,7 +36,7 @@ const Addproducts = () => {
             category_name, category_products
         }
         // send to infobase(collection user or seller)
-        fetch('http://localhost:5000/allproducts', {
+        fetch('https://carreselling-server.vercel.app/allproducts', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

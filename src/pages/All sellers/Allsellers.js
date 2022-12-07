@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const Allsellers = () => {
     const { data, isLoading } = useQuery(['showCategory'], () => {
-        return axios.get('http://localhost:5000/allusers')
+        return axios.get('https://carreselling-server.vercel.app/allusers')
     },
         {
             refetchInterval: 2000
@@ -21,7 +21,7 @@ const Allsellers = () => {
         const body = {
             verify
         }
-        fetch(`http://localhost:5000/verifyseller/${id}`, {
+        fetch(`https://carreselling-server.vercel.app/verifyseller/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -32,7 +32,7 @@ const Allsellers = () => {
 
     const handleDelete = (id) => {
         console.log(id);
-        fetch(`http://localhost:5000/deleteseller/${id}`, {
+        fetch(`https://carreselling-server.vercel.app/deleteseller/${id}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json'
