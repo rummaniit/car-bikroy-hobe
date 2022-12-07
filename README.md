@@ -8,6 +8,15 @@ In the project directory, you can run:
 
 ### `npm start`
 
+### Live Link https://carbikroyhobe.web.app/
+
+## 1.	User can sell and buy cars from this website .If the users registered as User (who will buy car) after registration or login when he/she goes to the Dashboard he/she can see the My orders route. If the user registered as Seller (who will sell cars) after registration or login when he/she goes to the Dashboard he/she can see the Add products route and My products. User can delete his/her products and also pay for the products. At the My products section Seller can see his/her products and check product’s availability. Admin can verify Seller and  can delete both buyer and seller
+## 2.	Using JWT ,private Routes for Securing website routes. No one without proper verification can not visit other routes. If anyone tries to do that he will get accessToken forbidden.
+## 3.	CRUD operation
+
+
+
+
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
