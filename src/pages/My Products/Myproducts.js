@@ -3,8 +3,10 @@ import { useQuery } from '@tanstack/react-query'
 import axios from 'axios';
 import { useContext } from 'react';
 import { Authcontext } from '../../Context/AuthContext/AuthServices';
+import useTitle from '../../hooks/useTitle';
 
 const Myproducts = () => {
+    useTitle('My Products')
     const { presentUser } = useContext(Authcontext)
     console.log(presentUser);
     const { data, isLoading } = useQuery(['myProducts'], () => {

@@ -4,8 +4,10 @@ import { useContext } from 'react';
 import { Authcontext } from '../../Context/AuthContext/AuthServices';
 
 import { useForm } from 'react-hook-form';
+import useTitle from '../../hooks/useTitle';
 
 const Addproducts = () => {
+    useTitle('Add Products')
     const { presentUser } = useContext(Authcontext)
 
     const { register, handleSubmit } = useForm();

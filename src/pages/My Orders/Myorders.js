@@ -3,8 +3,10 @@ import axios from 'axios';
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Authcontext } from '../../Context/AuthContext/AuthServices';
+import useTitle from '../../hooks/useTitle';
 
 const Myorders = () => {
+    useTitle('My orders')
     const navigate = useNavigate()
     const { presentUser } = useContext(Authcontext)
     const { data, isLoading } = useQuery(['myorders'], () => {

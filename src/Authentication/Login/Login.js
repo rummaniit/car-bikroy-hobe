@@ -5,9 +5,11 @@ import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Authcontext } from '../../Context/AuthContext/AuthServices';
+import useTitle from '../../hooks/useTitle';
 import useToken from '../../hooks/useToken';
 
 const Login = () => {
+    useTitle('Login')
     const { signIn, errors, setErrors, errorsCode, setErrorsCode } = useContext(Authcontext)
     const [loginUserEmail, setLoginUserEmail] = useState('')
     const [token] = useToken(loginUserEmail)

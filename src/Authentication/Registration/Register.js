@@ -4,9 +4,11 @@ import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { Authcontext } from '../../Context/AuthContext/AuthServices';
+import useTitle from '../../hooks/useTitle';
 import useToken from '../../hooks/useToken';
 
 const Register = () => {
+    useTitle('Register')
     const [createdUseremail, setCreatedUseremail] = useState('')
     const [token] = useToken(createdUseremail)
     const { createUser, errors, setErrors, updateUserName } = useContext(Authcontext)

@@ -2,9 +2,11 @@ import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { useLoaderData, useLocation, useNavigate } from 'react-router-dom';
 import { Authcontext } from '../../Context/AuthContext/AuthServices';
+import useTitle from '../../hooks/useTitle';
 // import AuthServices from '../../Context/AuthContext/AuthServices';
 
 const Modal = () => {
+    useTitle('Modal')
     const { presentUser } = useContext(Authcontext)
     const navigate = useNavigate()
     console.log(presentUser);

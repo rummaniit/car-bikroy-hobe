@@ -5,8 +5,10 @@ import Banner from './Banner/Banner';
 import Chat from './Contact with Us/Chat';
 import { useNavigate } from 'react-router-dom';
 import Available from './Available Cars/Available';
+import useTitle from '../../hooks/useTitle';
 
 const Home = () => {
+    useTitle('Home')
     const navigate = useNavigate()
     const { data, isLoading } = useQuery(['showCategory'], () => {
         return axios.get('https://carreselling-server.vercel.app/allcars')

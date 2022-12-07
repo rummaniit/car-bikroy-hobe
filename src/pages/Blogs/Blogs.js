@@ -1,10 +1,11 @@
 // import { useQuery } from '@tanstack/react-query';
 // import axios from 'axios';
 import React from 'react';
+import useTitle from '../../hooks/useTitle';
 // import { Authcontext } from '../../Context/AuthContext/AuthServices';
 
 const Blogs = () => {
-
+    useTitle('Blogs')
     return (
         <div className='grid grid-cols-1 gap-3  mt-10 md:grid-cols-2'>
             <div className="card card-compact w-96 bg-base-100 shadow-xl">

@@ -1,8 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React from 'react';
+import useTitle from '../../hooks/useTitle';
 
 const Allcars = () => {
+    useTitle('All Cars')
     const { data, isLoading } = useQuery(['allcars'], () => {
         return axios.get('https://carreselling-server.vercel.app/allcars')
     }, {

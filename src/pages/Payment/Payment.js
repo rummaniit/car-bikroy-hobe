@@ -4,12 +4,14 @@
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import { useLoaderData } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 import CheckoutForm from './CheckoutForm';
 // import { Authcontext } from '../../Context/AuthContext/AuthServices';
 const stripePromise = loadStripe('pk_test_51M9vT1KC3hoVsD4SRMHvXh65XkTW1fvoFKvcLonT6lWdONXABk8QdwJKUOf1r2BbO3VFtQ0yWeoVFD3heUsaAZAN00g0gSShNH');
 console.log(stripePromise);
 
 const Payment = () => {
+    useTitle('Payment')
     const data = useLoaderData()
     console.log(data);
     return (

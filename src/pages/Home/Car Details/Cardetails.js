@@ -1,8 +1,10 @@
 import React from 'react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
+import useTitle from '../../../hooks/useTitle';
 import Modal from '../../Modal/Modal';
 
 const Cardetails = () => {
+    useTitle('Car Details')
     const data = useLoaderData()
     // console.log(data);
     const imageStyle = {
